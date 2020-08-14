@@ -1,3 +1,2 @@
-#!/usr/bin/env ruby # rubocop:disable Layout/EndOfLine
-
+# !/usr/bin/env ruby
 puts 'Hello World!'
