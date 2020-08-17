@@ -67,20 +67,7 @@ def current_player(board)
   turn_count(board).even? ? 'X' : 'O'
 end
 
-# In this section game asks player to enter a number between 0 and 9
-# def turn(board)
-#  puts 'Please enter 1-9:'
-#  user_input = gets.strip
-#  index = input_to_index(user_input)
-#  if valid_move?(board, index)
-#    player_move(board, index, current_player(board))
-#    display_board(board)
-#  else
-#    turn(board)
-#  end
-# end
-
-# Its includes players move. If number is divisible by 2, returns 'X'. Else returns 'O'
+# In this section game asks player to enter a number between 1 and 9
 def turn(board, invalid = false)
   puts 'That was an invalid input' if invalid
   puts 'Please enter 1-9:'
