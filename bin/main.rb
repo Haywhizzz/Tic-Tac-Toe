@@ -32,3 +32,15 @@ def position_taken?(board, index)
     true
   end
 end
+
+def valid_move?(board, index)
+  if !position_taken?(board, index) && index.between?(0, 8)
+    true
+  else
+    false
+  end
+end
+
+def current_player(board)
+  turn_count(board).even? ? 'X' : 'O'
+end
