@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 puts 'Welcome to Tic Tac Toe!'
-# This section we define users name
-# Each users has to sign their identity before start game
+# This section we define the users name
+# Each users has to sign their identity before game starts
 print 'Player 1 :'
 @name1 = gets.chomp
 puts ' '
@@ -21,8 +21,8 @@ def display_board
 end
 
 puts display_board == ['', '', '', '', '', '', '', '', '']
-# Computer start index 0. But people start counting from 1.
-# We let computer now which number should it take.
+# Computer start index from 0. But people start counting from 1.
+# We let computer know which number should it take.
 def input_to_index(user_input)
   user_input.to_i - 1
 end
@@ -32,8 +32,8 @@ def player_move(board, index, marker)
   board[index] = marker
 end
 
-# This condition checking if position is taken or its a valid move.
-# If position taken before another player you can't sign your point here.
+# This condition checks if position is taken or its a valid move.
+# If position is taken before another player you can't sign your point here.
 def position_taken?(board, index)
   if board[index] == '' || board[index] == '' || board[index].nil?
     false
@@ -42,7 +42,7 @@ def position_taken?(board, index)
   end
 end
 
-# In this definiton computer array starting from 0 until 8.
+# In this definiton computer array starts counting from 0 until 8.
 def valid_move?(board, index)
   if !position_taken?(board, index) && index.between?(0, 8)
     true
@@ -72,6 +72,6 @@ end
 def turn_count(board)
   counter = 0
   board.each do |space|
-    counter += 1 if ['%wX', '%wO'].include?(space)
+    counter += 1 if %w[X O].include?(space)
   end
 end
