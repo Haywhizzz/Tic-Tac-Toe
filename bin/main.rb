@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-puts 'Wellcome to Tic Tac Toe!'
+puts 'Welcome to Tic Tac Toe!'
 print 'Player 1 :'
 @name1 = gets.chomp
 puts ' '
@@ -18,5 +18,9 @@ def display_board
 end
 
 def input_to_index(user_input)
+  user_input.to_i - 1
+end
 
+def player_move(board, index, marker)
+  board[index] = marker
 end
