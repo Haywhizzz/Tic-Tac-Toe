@@ -85,10 +85,16 @@ def turn(board, invalid = false)
 
   # After finishing the game
   # if there is a win
-  winner = Player 1
-  puts "The winner of the game is #{winner}. Congratulations!"
-  # if there is a draw
-  puts 'The game is drawn. Nobody won!'
 
   # Do you want to play again?
+end
+
+game_not_over = false
+while game_not_over
+  turn
+  next unless there is a draw
+
+  puts 'The game is drawn. Nobody won!'
+  # check for winner
+  check_for_draw if winner puts "#{name} You won the game!"
 end
