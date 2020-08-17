@@ -12,6 +12,7 @@ puts ' '
 puts 'Good luck!'
 # Our board has 9 integers. We will describe in game logic how to play it.
 # Hash symbols will change with integers.
+puts 'This is the board'
 def display_board
   puts '| # | # | # |'
   puts '-------------'
@@ -20,7 +21,18 @@ def display_board
   puts '| # | # | # |'
 end
 
-puts display_board == ['', '', '', '', '', '', '', '', '']
+puts "Turn of #{@name1}:"
+input = gets.chomp
+puts "Your input was #{input}"
+puts 'This is the board now'
+# Show the board
+puts "Turn of #{@name2}:"
+input = gets.chomp
+puts "Your input was #{input}"
+puts 'This is the board now'
+# Show the board
+
+# puts display_board == ['', '', '', '', '', '', '', '', '']
 # Computer start index from 0. But people start counting from 1.
 # We let computer know which number should it take.
 def input_to_index(user_input)
@@ -80,4 +92,16 @@ def turn(board, invalid = false)
   else
     turn(board, true)
   end
+
+  # game informs the player if the selected move is a winning move
+  # game informs the player if the selected move is a draw move
+
+  # After finishing the game
+  # if there is a win
+  winner = Player 1
+  puts "The winner of the game is #{winner}. Congratulations!"
+  # if there is a draw
+  puts 'The game is drawn. Nobody won!'
+
+  # Do you want to play again?
 end
