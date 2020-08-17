@@ -10,7 +10,6 @@ print 'Player 2 :'
 @name2 = gets.chomp
 puts ' '
 puts 'Good luck!'
-puts display_board == [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 # Our board has 9 integers. We will describe in game logic how to play it.
 # Hash symbols will change with integers.
 def display_board
@@ -21,6 +20,7 @@ def display_board
   puts '| # | # | # |'
 end
 
+puts display_board == ['', '', '', '', '', '', '', '', '']
 # Computer start index 0. But people start counting from 1.
 # We let computer now which number should it take.
 def input_to_index(user_input)
@@ -35,7 +35,7 @@ end
 # This condition checking if position is taken or its a valid move.
 # If position taken before another player you can't sign your point here.
 def position_taken?(board, index)
-  if board[index] == '' || board[index] == ' ' || board[index].nil?
+  if board[index] == '' || board[index] == '' || board[index].nil?
     false
   else
     true
