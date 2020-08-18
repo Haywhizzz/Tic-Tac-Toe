@@ -22,23 +22,23 @@ def won?(board)
     return win_combo if position_1 == position_2 && position_2 == position_3 && position_taken?(board, win_index_1)
   end
   false
-  end
+end
 
 def full?(board)
   if board.any? { |index| index.nil? || index == ' ' }
     false
   else
     true
-    end
   end
+end
 
 def draw?(board)
   if !won?(board) && full?(board)
     return true
-    elsif! full?(board) && !won?(board)
+    elsif !full?(board) && !won?(board)
     false
   else won?(board)
-    false
+       false
   end
 end
 
