@@ -85,6 +85,4 @@ while game_not_over
       counter += 1
     end
   end
-
-  
 end

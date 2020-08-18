@@ -1,23 +1,19 @@
 class Board
-    def winner?(board)
-    board[won?(board)[0]] unless won?(board)
-  end
-
-  def play(board)
-    counter = 0
-    until counter == 9
-      turn(board)
-      counter += 1
+  def draw?(board)
+    if !won?(board) && full?(board)
+      true
+    elsif !won?(board) && !full?(board)
+      false
+    else won?(board)
+         false
     end
   end
 
-  def play(board)
-    turn(board) until over?(board)
-    if won?(board)
-      winner(board) == 'X' || winner(board) == 'O'
-      puts "Congratulations #{winner(board)}!"
-    else draw?(board)
-         puts 'Tic-Tac-Toe!'
-    end
+  def over?(board)
+    return true if draw?(board) || won?(board) || full?(board)
+  end
+
+  def winner(board)
+    return board[won?(board)[0]] if won?(board)
   end
 end
