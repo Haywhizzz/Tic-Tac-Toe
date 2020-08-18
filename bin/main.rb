@@ -94,7 +94,12 @@ while game_not_over
   turn
   next unless there is a draw
 
-  puts 'The game is drawn. Nobody won!'
-  # check for winner
-  check_for_draw if winner puts "#{name} You won the game!"
+def draw?(board)
+  if !won?(board) && full?(board)
+    return true
+  elsif !won?(board)
+    return false
+  else won?(board)
+    return false
+  end
 end
