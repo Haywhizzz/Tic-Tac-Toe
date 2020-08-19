@@ -10,13 +10,8 @@ print 'Player 2 :'
 puts ' '
 puts 'Good luck!'
 puts 'This is the board'
-def display_board
-  puts '| # | # | # |'
-  puts '-------------'
-  puts '| # | # | # |'
-  puts '-------------'
-  puts '| # | # | # |'
-end
+board = Board.new
+board.display_board
 
 puts "Turn of #{@name1}:"
 input = gets.chomp
@@ -86,4 +81,21 @@ while game_not_over
       counter += 1
     end
   end
+end
+
+=begin
+  loop do
+    ask for move
+    check if move is legal
+    return error message if it isn't and then go back to top of loop with #continue keyword
+    if move is legal
+      check if the game is won or drawn
+      return some message that the game is won or drawn and return from the loop using the #return keyword or the #break
+      if the game is not won or drawn, 
+        switch players
+        then go back to top of the loop using #continue keyword
+
+  end
+rescue => exception
+  
 end

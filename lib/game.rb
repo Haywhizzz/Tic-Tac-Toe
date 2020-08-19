@@ -1,8 +1,8 @@
 class Gameplay
-  attr_accessor :WINNING
-  private :WINNING
+  attr_accessor :winning_combo
+  private :winning_combo
   def initialize
-    WINNING = [
+    @winning_combo = [
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -15,7 +15,7 @@ class Gameplay
   end
 
   def won?(board)
-    WINNING.each do |win_combo|
+    winning_combo.each do |win_combo|
       win_index1 = win_combo[0]
       win_index2 = win_combo[1]
       win_index3 = win_combo[2]
@@ -25,6 +25,7 @@ class Gameplay
       position3 = board[win_index3]
 
       return win_combo if position1 == position2 && position2 == position3 && position_taken?(board, win_index1)
+
       return false
     end
   end
@@ -42,8 +43,8 @@ class Gameplay
       true
     elsif !full?(board) && !won?(board)
       false
-    else won?(board)
-         false
+    elsif won?(board)
+      false
     end
   end
 
