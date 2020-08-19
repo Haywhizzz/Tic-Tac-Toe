@@ -1,10 +1,10 @@
 class Board
-  def initialize
+  def initialize; end
 
-  end
   def winner(board)
     return board[won?(board)[0]] if won?(board)
   end
+
   def display_board
     puts '| # | # | # |'
     puts '-------------'
