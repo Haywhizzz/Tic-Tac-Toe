@@ -9,3 +9,14 @@ class Game
     @second_player = player_two
     @board = board
   end
+
+   def switch_player
+    @current_player, @second_player = @second_player, @current_player
+  end
+  def ask_for_move
+    "#{current_player.name}, please make your move by choosing a number from 1 to 9."
+  end
+  def get_player_move(player_move)
+    board_position_mapping(player_move)
+  end
+
