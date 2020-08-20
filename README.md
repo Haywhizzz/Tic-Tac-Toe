@@ -1,4 +1,9 @@
 # Tic-Tac-Toe
+In this project, We built a Tic Tac Toe game with Ruby. The main goal was to put into practice the main concepts of Object Oriented Programming. Particularly, classes and access to their attributes.
+
+[![Status](https://img.shields.io/badge/status-active-success.svg)](https://github.com/Haywhizzz/Tic-Tac-Toe)
+[![Github Issues](https://img.shields.io/badge/GitHub-Issues-orange)](https://github.com/Haywhizzz/Tic-Tac-Toe/issues)
+[![GitHub2 Pull Requests](https://img.shields.io/badge/GitHub-Pull%20Requests-blue)](https://github.com/Haywhizzz/Tic-Tac-Toe/pulls)
 
 ## How To Run
 
@@ -19,6 +24,14 @@
 - 3rd turn- Player 1 …. and the cycle continues until a player wins or there’s a tie game
 - There are 8 winning combinations: Top row, Middle row, Bottom row, Left column, Middle column, Right column, Left diagonal, and Right diagonal
 - There’s a draw when the entire board is filled with X’s and O’s but no winning combinations can be found
+
+![screenshot](screenshots/tic-tac-toe.png)
+
+## Built With
+
+- Ruby
+- VS Code
+- Windows
 
 ## Live Demo Link
 - [Live](https://repl.it/@Haywhizzz/Tic-Tac-Toe-1#bin/main.rb)
