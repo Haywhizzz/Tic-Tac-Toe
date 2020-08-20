@@ -20,3 +20,13 @@ class Game
     board_position_mapping(player_move)
   end
 
+  def end_game_message
+    case board.game_ended?
+    when :win
+      "#{current_player.name} has won!"
+    when :draw
+      'The game has ended in a draw'
+    end
+  end
+
+
