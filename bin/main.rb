@@ -39,21 +39,11 @@ loop do
       end
     end
   end
-
-game_not_over = false
-while game_not_over
-  turn
-  next unless there is a draw
-
-  def winner?(board)
-    board[won?(board)[0]] unless won?(board)
-  end
-
-  def play(board)
-    counter = 0
-    until counter == 9
-      turn(board)
-      counter += 1
-    end
+  if game.board.game_ended?
+    puts game.end_game_message
+    game.board.display_board
+    return
+  else
+    game.switch_player
   end
 end
