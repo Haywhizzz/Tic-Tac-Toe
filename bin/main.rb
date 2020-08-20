@@ -1,16 +1,24 @@
 #!/usr/bin/env ruby
-require_relative '../lib/game'
-require_relative '../lib/board'
-require_relative '../lib/array_extensions'
+require_relative '../lib/game.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/array_extensions.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/slot.rb'
 
 puts 'Welcome to Tic Tac Toe!'
 print 'Player 1 :'
-@name1 = gets.chomp
-puts ' '
+player_one_name = gets.chomp.capitalize
+player_one = Player.new(player_one_name, 'X')
+puts "Welcome, #{player_one.name}, you will play as 'X'."
+
 print 'Player 2 :'
-@name2 = gets.chomp
-puts ' '
-puts 'Good luck!'
+player_two_name = gets.chomp.capitalize
+player_two = Player.new(player_two_name, 'O')
+puts "Welcome, #{player_two.name} you will play as 'O'."
+game = Game.new(player_one, player_two)
+
+puts "#{game.current_player.name} will begin the game"
+
 puts 'This is the board'
 board = Board.new
 board.display_board
