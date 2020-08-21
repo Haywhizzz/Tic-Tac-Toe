@@ -15,35 +15,48 @@ print 'Player 2 :'
 player_two_name = gets.chomp.capitalize
 player_two = Player.new(player_two_name, 'O')
 puts "Welcome, #{player_two.name} you will play as 'O'."
-game = Game.new(player_one, player_two)
+@game = Game.new(player_one, player_two)
 
-puts "#{game.current_player.name} will begin the game"
+puts "#{@game.current_player.name} will begin the game"
 
-loop do
-  game.board.display_board
-  print "\n"
-  loop do
-    puts game.ask_for_move
+def input_loop
+  test = true
+  while test
+    puts @game.ask_for_move
     move = gets.chomp.to_i
-    a, b = game.get_player_move(move)
+    a, b = @game.get_player_move(move)
     begin
-      game.board.get_a_board_slot(a, b)
+      @game.board.get_a_board_slot(a, b)
     rescue TypeError
       puts "That's not a number from 1 to 9"
     else
-      if game.board.set_a_board_slot(a, b, game.current_player.symbol) == false
+      if @game.board.set_a_board_slot(a, b, @game.current_player.symbol) == false
         puts 'That cell is not empty'
       else
-        game.board.set_a_board_slot(a, b, game.current_player.symbol)
-        break
+        @game.board.set_a_board_slot(a, b, @game.current_player.symbol)
+        test = false
       end
     end
   end
-  if game.board.game_ended?
-    puts game.end_game_message
-    game.board.display_board
-    return
+end
+
+def state_check
+  if @game.board.game_ended?
+    puts @game.end_game_message
+    @game.board.display_board
+    nil
   else
-    game.switch_player
+    @game.switch_player
   end
 end
+
+def main_loop
+  loop do
+    @game.board.display_board
+    print "\n"
+    input_loop
+    break unless state_check
+  end
+end
+
+main_loop
