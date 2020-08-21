@@ -1,100 +1,62 @@
 #!/usr/bin/env ruby
+require_relative '../lib/game.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/array_extensions.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/slot.rb'
 
 puts 'Welcome to Tic Tac Toe!'
-# This section we define the users name
-# Each users has to sign their identity before game starts
 print 'Player 1 :'
-@name1 = gets.chomp
-puts ' '
+player_one_name = gets.chomp.capitalize
+player_one = Player.new(player_one_name, 'X')
+puts "Welcome, #{player_one.name}, you will play as 'X'."
+
 print 'Player 2 :'
-@name2 = gets.chomp
-puts ' '
-puts 'Good luck!'
-# Our board has 9 integers. We will describe in game logic how to play it.
-# Hash symbols will change with integers.
-puts 'This is the board'
-def display_board
-  puts '| # | # | # |'
-  puts '-------------'
-  puts '| # | # | # |'
-  puts '-------------'
-  puts '| # | # | # |'
-end
+player_two_name = gets.chomp.capitalize
+player_two = Player.new(player_two_name, 'O')
+puts "Welcome, #{player_two.name} you will play as 'O'."
+@game = Game.new(player_one, player_two)
 
-puts "Turn of #{@name1}:"
-input = gets.chomp
-puts "Your input was #{input}"
-puts 'This is the board now'
-# Show the board
-puts "Turn of #{@name2}:"
-input = gets.chomp
-puts "Your input was #{input}"
-puts 'This is the board now'
-# Show the board
+puts "#{@game.current_player.name} will begin the game"
 
-# puts display_board == ['', '', '', '', '', '', '', '', '']
-# Computer start index from 0. But people start counting from 1.
-# We let computer know which number should it take.
-def input_to_index(user_input)
-  user_input.to_i - 1
-end
-
-# We set board equal to marker. This definiton changes elements position.
-def player_move(board, index, marker)
-  board[index] = marker
-end
-
-# This condition checks if position is taken or its a valid move.
-# If position is taken before another player you can't sign your point here.
-def position_taken?(board, index)
-  if board[index] == '' || board[index] == '' || board[index].nil?
-    false
-  else
-    true
+def input_loop
+  test = true
+  while test
+    puts @game.ask_for_move
+    move = gets.chomp.to_i
+    a, b = @game.get_player_move(move)
+    begin
+      @game.board.get_a_board_slot(a, b)
+    rescue TypeError
+      puts "That's not a number from 1 to 9"
+    else
+      if @game.board.set_a_board_slot(a, b, @game.current_player.symbol) == false
+        puts 'That cell is not empty'
+      else
+        @game.board.set_a_board_slot(a, b, @game.current_player.symbol)
+        test = false
+      end
+    end
   end
 end
 
-# In this definiton computer array starts counting from 0 until 8.
-def valid_move?(board, index)
-  if !position_taken?(board, index) && index.between?(0, 8)
-    true
+def state_check
+  if @game.board.game_ended?
+    puts @game.end_game_message
+    @game.board.display_board
+    nil
   else
-    false
+    @game.switch_player
   end
 end
 
-def current_player(board)
-  turn_count(board).even? ? 'X' : 'O'
-end
-
-# In this section game asks player to enter a number between 1 and 9
-def turn(board, invalid = false)
-  puts 'That was an invalid input' if invalid
-  puts 'Please enter 1-9:'
-  user_input = gets.strip
-  index = input_to_index(user_input)
-  if valid_move?(board, index)
-    player_move(board, index, current_player(board))
-    display_board(board)
-  else
-    turn(board, true)
+def main_loop
+  loop do
+    @game.board.display_board
+    print "\n"
+    input_loop
+    break unless state_check
   end
-
-  # game informs the player if the selected move is a winning move
-  # game informs the player if the selected move is a draw move
-
-  # After finishing the game
-  # if there is a win
-
-  # Do you want to play again?
 end
 
-game_not_over = false
-while game_not_over
-  turn
-  next unless there is a draw
-
-  puts 'The game is drawn. Nobody won!'
-  # check for winner
-  check_for_draw if winner puts "#{name} You won the game!"
-end
+main_loop
